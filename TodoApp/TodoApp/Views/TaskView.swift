@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TaskView: View {
     
-    @StateObject private var todoViewModel = TodoViewModel();
+    @StateObject private var todoViewModel = TaskViewModel();
     @State var textController = "";
     
     var body: some View {

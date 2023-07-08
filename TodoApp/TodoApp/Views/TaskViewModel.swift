@@ -11,9 +11,9 @@ import SwiftUI
 final class TaskViewModel : ObservableObject{
     
     
-    @Published var todos: [Todo] = []
+    @Published var todos: [Task] = []
     
-    struct Todo : Identifiable{
+    struct Task : Identifiable{
         var id = UUID();
         var title : String;
         var timeStamp : Date = Date.now;
@@ -25,18 +25,18 @@ final class TaskViewModel : ObservableObject{
         if title.isEmpty{
             return;
         }
-        todos.append(Todo(title: title));
+        todos.append(Task(title: title));
     }
     
     func removeTask(index: Int) -> Void {
         todos.remove(at: index)
     }
     
-    var incompleteTodos: [Todo] {
+    var incompleteTodos: [Task] {
         return todos.filter { !$0.isCompleted }
     }
     
-    var completedTodos: [Todo] {
+    var completedTodos: [Task] {
         return todos.filter { $0.isCompleted }
     }
 }
